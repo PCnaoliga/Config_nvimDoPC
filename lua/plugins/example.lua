@@ -194,22 +194,4 @@ return {
       },
     },
   },
-
-  { "tikhomirov/vim-glsl" },
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, { "glsl" })
-      end
-    end,
-  },
-
-  -- Renderização bonita dentro do Neovim
-  {
-    "MeanderingProgrammer/render-markdown.nvim",
-    opts = {},
-    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
-  },
 }

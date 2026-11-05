@@ -30,7 +30,7 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "tokyonight" } },
+  install = { colorscheme = { "tokyonight", "habamax" } },
   checker = {
     enabled = true, -- check for plugin updates periodically
     notify = false, -- notify on update
@@ -50,45 +50,4 @@ require("lazy").setup({
       },
     },
   },
-
-  -- 1. SNIPPETS (Produtividade de código)
-  {
-    "L3MON4D3/LuaSnip",
-    dependencies = { "rafamadriz/friendly-snippets" },
-    config = function()
-      require("luasnip.loaders.from_vscode").lazy_load()
-    end,
-  },
-
-  -- 2. NEOTEST (Para rodar testes do Django)
-  {
-    "nvim-neotest/neotest",
-    dependencies = {
-      "nvim-neotest/neotest-python",
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function()
-      require("neotest").setup({
-        adapters = { require("neotest-python")({ runner = "pytest" }) },
-      })
-    end,
-  },
-
-  -- 3. DAP (Debugger para Python/Django)
-  {
-    "mfussenegger/nvim-dap",
-    dependencies = { "mfussenegger/nvim-dap-python" },
-    config = function()
-      local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
-      require("dap-python").setup(path)
-    end,
-  },
-
-  -- No arquivo onde configurou o plugin 'mfussenegger/nvim-dap-python'
-  config = function()
-    -- O caminho padrão onde o Mason instala o debugpy no Linux/macOS
-    local debugpy_path = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python"
-    require("dap-python").setup(debugpy_path)
-  end,
 })
