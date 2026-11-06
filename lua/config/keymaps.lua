@@ -12,8 +12,16 @@ local function toggle_terminal()
   Snacks.terminal(nil, { cwd = LazyVim.root() })
 end
 
+local function new_terminal()
+  require("tiny-term").open(nil, {
+    cwd = LazyVim.root(),
+    win = { position = "bottom" },
+  })
+end
+
 map({ "n", "i" }, "<M-q>", toggle_explorer, { desc = "Alternar explorador de arquivos" })
 map({ "n", "i", "t" }, "<M-e>", toggle_terminal, { desc = "Alternar terminal" })
+map({ "n", "i", "t" }, "<M-E>", new_terminal, { desc = "Criar nova aba de terminal" })
 
 map("n", "<C-Left>", "<C-w>h", { desc = "Ir para a janela à esquerda", remap = true })
 map("n", "<C-Down>", "<C-w>j", { desc = "Ir para a janela abaixo", remap = true })
