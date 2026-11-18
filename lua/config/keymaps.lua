@@ -74,6 +74,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 map("i", "jj", "<Esc>", { desc = "Sair do insert com jj" })
+map("n", "qq", "<cmd>quit<cr>", { desc = "Fechar janela ou sair do Neovim" })
 map("n", "<leader>q", ":wq<CR>", { desc = "Salvar e sair" })
 
 vim.keymap.set("n", "<leader>lt", function()
